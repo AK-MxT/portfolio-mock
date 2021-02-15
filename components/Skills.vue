@@ -45,6 +45,7 @@
                 v-rating(
                   v-model="skill.rate"
                   half-increments
+                  readonly
                   size="40"
                   background-color="secondary"
                 )
