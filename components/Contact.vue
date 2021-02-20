@@ -166,22 +166,23 @@ export default class Contact extends Vue {
     this.dialog = !this.dialog
   }
   async send () {
-    try {
-      // 送信処理
-      const sendMail = functions.httpsCallable("sendMail")
+    // モックなのでメール送信処理はコメントアウト
+    // try {
+    //   // 送信処理
+    //   const sendMail = functions.httpsCallable("sendMail")
 
-      await sendMail({
-        name: this.name,
-        email: this.mail,
-        subject: this.subject,
-        content: this.content
-      })
+    //   await sendMail({
+    //     name: this.name,
+    //     email: this.mail,
+    //     subject: this.subject,
+    //     content: this.content
+    //   })
 
-      // メールフォームのリセット
-      this.refs.form.reset()
-    } catch (_e) {
-      console.log(_e)
-    }
+    //   // メールフォームのリセット
+    //   this.refs.form.reset()
+    // } catch (_e) {
+    //   console.log(_e)
+    // }
     // 確認ダイアログを閉じる
     this.dialog = !this.dialog
 
