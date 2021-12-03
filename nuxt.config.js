@@ -12,7 +12,7 @@ export default {
     // titleTemplate: '%s - ts-nuxt',
     title: 'portfolio-mock',
     htmlAttrs: {
-      lang: 'jp'
+      lang: 'en'
     },
     meta: [
       { charset: 'utf-8' },
