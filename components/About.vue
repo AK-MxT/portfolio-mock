@@ -1,21 +1,21 @@
-<template lang="pug">
-  v-container
-    v-row
-      v-col(
+<template>
+  <v-container>
+    <v-row>
+      <v-col
         cols="12"
         xl="8"
         lg="8"
         md="8"
         sm="12"
         class="mx-auto"
-      )
-        v-card(
+      >
+        <v-card
           color="transparent"
           flat
-        )
-          v-container
-            v-row
-              v-col(
+        >
+          <v-container>
+            <v-row>
+              <v-col
                 cols="12"
                 xl="4"
                 lg="4"
@@ -23,39 +23,44 @@
                 sm="12"
                 align-self="center"
                 class="mx-auto"
-              )
-                div(
+              >
+                <div
                   class="text-center"
-                )
-                  v-avatar(
+                >
+                  <v-avatar
                     color="indigo"
                     size="128"
-                  )
-                    v-icon(
+                  >
+                    <v-icon
                       dark
-                    ) 写真
-              v-col(
+                    >
+                      写真
+                    </v-icon>
+                  </v-avatar>
+                </div>
+              </v-col>
+              <v-col
                 cols="12"
                 xl="8"
                 lg="8"
                 md="8"
                 sm="12"
-              )
-                v-card-text(
+              >
+                <v-card-text
                   class="headline font-weight-bold"
-                ) サンプル 太郎
-                v-card-text(
+                >
+                  サンプル 太郎
+                </v-card-text>
+                <v-card-text
                   class="headline"
-                ) ご覧いただきありがとうございます。<br>ここに自己紹介文を書きます。<br>ここに自己紹介文を書きます。<br>ここに自己紹介文を書きます。
+                >
+                  ご覧いただきありがとうございます。<br>ここに自己紹介文を書きます。<br>ここに自己紹介文を書きます。<br>ここに自己紹介文を書きます。
+                </v-card-text>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
-
-<script lang="ts">
-import {Component, Vue} from "nuxt-property-decorator"
-
-@Component
-export default class About extends Vue {
-
-
-}
-</script>
-

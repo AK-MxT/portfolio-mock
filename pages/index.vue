@@ -1,57 +1,74 @@
-<template lang="pug">
-  div(
+<template>
+  <div
     id="home"
-  )
-    v-img(
+  >
+    <v-img
       :src="src"
       height="800"
-    )
-      div(
+    >
+      <div
         class="welcome"
-      ) {{ welcome }}
-    div(
+      >
+        {{ welcome }}
+      </div>
+    </v-img>
+    <div
       id="about"
       class="title-base"
-    )
-      p ABOUT
-    About
-    div(
+    >
+      <p>
+        ABOUT
+      </p>
+    </div>
+    <about />
+    <div
       id="skills"
       class="title-base"
-    )
-      p SKILLS
-    Skills
-    div(
+    >
+      <p>
+        SKILLS
+      </p>
+    </div>
+    <skills />
+    <div
       id="works"
       class="title-base"
-    )
-      p WORKS
-    Works
-    div(
+    >
+      <p>
+        WORKS
+      </p>
+    </div>
+    <works />
+    <div
       id="contact"
       class="title-base"
-    )
-      p CONTACT
-    Contact
+    >
+      <p>
+        CONTACT
+      </p>
+    </div>
+    <contact />
+  </div>
 </template>
 
 <script lang="ts">
-import {Component, Vue} from "nuxt-property-decorator"
+import { defineComponent } from '@vue/composition-api'
 
-@Component
-export default class Index extends Vue {
+export default defineComponent({
+  setup () {
+    const src = require('@/assets/home/MIZUHO928013_TP_V.jpg')
 
-  // data
-  src: string = require('@/assets/home/MIZUHO928013_TP_V.jpg');
+    const welcome = 'Welcome to Sample Portfolio Page!!'
 
-  // computed
-  get welcome(): string {
-    return 'Welcome to Sample Portfolio Page!!'
+    return {
+      src,
+      welcome
+    }
   }
-}
+})
 </script>
 
-<style>
+<style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Tangerine&display=swap');
 
