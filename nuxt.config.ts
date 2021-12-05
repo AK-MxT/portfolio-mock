@@ -1,6 +1,7 @@
+import { NuxtConfig } from '@nuxt/types'
 import colors from 'vuetify/es5/util/colors'
 
-export default {
+const nuxtConfig: NuxtConfig = {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
@@ -12,7 +13,7 @@ export default {
     // titleTemplate: '%s - ts-nuxt',
     title: 'portfolio-mock',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'jp'
     },
     meta: [
       { charset: 'utf-8' },
@@ -39,6 +40,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
+    '@nuxtjs/composition-api/module',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify'
   ],
@@ -68,7 +70,7 @@ export default {
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
           success: colors.green.accent3,
-          background: colors.black
+          background: colors.grey
         },
         light: {
           primary: colors.green.base,
@@ -88,3 +90,5 @@ export default {
   build: {
   }
 }
+
+export default nuxtConfig
