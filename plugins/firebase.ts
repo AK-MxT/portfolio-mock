@@ -1,6 +1,5 @@
-import firebase from "firebase/app"
-import "firebase/app"
-import "firebase/functions"
+import { initializeApp } from 'firebase/app'
+import { getFunctions } from 'firebase/functions'
 
 const config = {
   // apiKey: process.env.FIREBASE_API_KEY,
@@ -10,5 +9,7 @@ const config = {
   // storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
   // messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID
 }
-firebase.initializeApp(config)
-export const functions = firebase.app().functions('asia-northeast1')
+
+const firebaseApp = initializeApp(config)
+
+export const functions = getFunctions(firebaseApp)
