@@ -13,11 +13,11 @@
           <v-col
             v-for="card in cards"
             :key="card.title"
-            :cols="card.col"
-            :xl="card.xl"
-            :lg="card.lg"
-            :md="card.md"
-            :sm="card.sm"
+            cols="12"
+            xl="6"
+            lg="6"
+            md="6"
+            sm="6"
           >
             <v-card>
               <v-img
@@ -36,7 +36,7 @@
                   color="secondary"
                   small
                   block
-                  @click="dialog=!dialog"
+                  @click="select(card)"
                 >
                   詳細
                 </v-btn>
@@ -46,166 +46,58 @@
         </v-row>
       </v-col>
     </v-row>
-    <v-dialog
+    <works-dialog
       v-model="dialog"
-    >
-      <v-card>
-        <v-container>
-          <v-row>
-            <v-col
-              cols="12"
-              xl="6"
-              lg="6"
-              md="6"
-              sm="6"
-            >
-              <v-card-title>
-                作品名
-              </v-card-title>
-              <v-divider />
-              <v-card-text>
-                アプリケーションの説明が入ります。<br>アプリケーションの説明が入ります。<br>アプリケーションの説明が入ります。<br>アプリケーションの説明が入ります。<br>アプリケーションの説明が入ります。
-              </v-card-text>
-              <v-divider />
-              <v-card-title
-                class="pb-1"
-              >
-                Skills
-              </v-card-title>
-              <template
-                v-for="(chip, index) in chips"
-              >
-                <v-chip
-                  :key="index"
-                  class="mx-1 my-2"
-                  color="accent"
-                >
-                  {{ chip.name }}
-                </v-chip>
-              </template>
-              <v-spacer />
-              <v-divider />
-              <v-card-title
-                class="pb-1"
-              >
-                Link
-              </v-card-title>
-              <v-card-text>
-                アプリケーションのURLを貼ります<br>GitHubのURLを貼ります
-              </v-card-text>
-            </v-col>
-            <v-col
-              cols="12"
-              xl="6"
-              lg="6"
-              md="6"
-              sm="6"
-            >
-              <div
-                class="text-center"
-              >
-                <v-sheet
-                  color="indigo"
-                  height="370"
-                >
-                  <h1>
-                    作品のキャプチャ画像
-                  </h1>
-                </v-sheet>
-              </div>
-              <div
-                class="text-right"
-              >
-                <v-btn
-                  class="mt-4 ml-1 mb-2"
-                  small
-                  color="error"
-                  @click="dialog=!dialog"
-                >
-                  閉じる
-                </v-btn>
-              </div>
-            </v-col>
-          </v-row>
-        </v-container>
-      </v-card>
-    </v-dialog>
+      :item="selected"
+      @close="dialog = false"
+    />
   </v-container>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from '@nuxtjs/composition-api'
+import type { WorksInfo } from '~/types/Works'
 
 export default defineComponent({
   setup () {
-    const cards = [
+    const cards: WorksInfo[] = [
       {
-        title: '作品1',
-        src: '',
-        col: 12,
-        xl: 6,
-        lg: 6,
-        md: 6,
-        sm: 6
+        title: 'Mock-App',
+        src: require('~/assets/works/1/capture.png'),
+        description: 'Nuxt Contentというモジュールを使ったCRUDアプリのモックです。<br>csvファイルで用意した書籍データをVuexに保存し、擬似的にCRUD操作ができるようにしてあります。<br>TypeScript＆composition-apiベースでコーディングしており、デザインフレームワークはVuetifyを採用しております。',
+        skills: ['Vue', 'Nuxt', 'Vuetify', 'TypeScript', 'Nuxt Content', 'nuxt-typed-vuex'],
+        links: ['https://goofy-ride-657aa7.netlify.app', 'https://github.com/AK-MxT/nuxt-content-mock']
       },
       {
         title: '作品2',
-        src: '',
-        col: 12,
-        xl: 6,
-        lg: 6,
-        md: 6,
-        sm: 6
+        skills: ['HTML', 'CSS', 'JavaScript', 'Vue', 'Nuxt'],
+        links: []
       },
       {
         title: '作品3',
-        src: '',
-        col: 12,
-        xl: 6,
-        lg: 6,
-        md: 6,
-        sm: 6
+        skills: ['HTML', 'CSS', 'JavaScript', 'Vue', 'Nuxt'],
+        links: []
       },
       {
         title: '作品4',
-        src: '',
-        col: 12,
-        xl: 6,
-        lg: 6,
-        md: 6,
-        sm: 6
-      }
-    ]
-
-    const chips = [
-      {
-        key: 1,
-        name: 'HTML'
-      },
-      {
-        key: 2,
-        name: 'CSS'
-      },
-      {
-        key: 3,
-        name: 'JavaScript'
-      },
-      {
-        key: 4,
-        name: 'Vue'
-      },
-      {
-        key: 5,
-        name: 'Nuxt'
+        skills: ['HTML', 'CSS', 'JavaScript', 'Vue', 'Nuxt'],
+        links: []
       }
     ]
 
     const dialog = ref(false)
+    const selected = ref<WorksInfo>(cards[0])
+
+    const select = (item: WorksInfo) => {
+      selected.value = item
+      dialog.value = true
+    }
 
     return {
       cards,
-      chips,
-      dialog
+      dialog,
+      select,
+      selected
     }
   }
 })
